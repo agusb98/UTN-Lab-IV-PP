@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="min-height: 100vh;" >
+  <div class="mt-3">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <span class="border border"></span>
+          <img
+            [src]="dataGit.avatar_url"
+            alt=""
+            class="rounded-circle img-fluid"
+          />
+          <div class="card-body">
+            <h4 class="card-title">{{ dataGit.name }}</h4>
+            <p class="card-text">{{ dataGit.bio }}</p>
+            <a
+              [href]="dataGit.html_url"
+              target="_blank"
+              class="btn btn-success btn-sm"
+              style="align-content: center"
+              >Git</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 align-self-center">
+        <h3 class="card-title">Datos Personales</h3>
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group" >
+              <li class="list-group-item">
+                Username:
+                <span class="font-weigh-bold">{{ dataGit.name }}</span>
+              </li>
+              <li class="list-group-item">
+                Location: {{ dataGit.location }}
+              </li>
+              <li class="list-group-item">Email: {{ dataGit.blog }}</li>
+              <li class="list-group-item">
+                Profile URL: {{ dataGit.html_url }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

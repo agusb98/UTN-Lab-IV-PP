@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="container p-4" style="min-height: 100vh; ">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Register</h3>
+          <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+            <div class="card-body">
+              <div class="form-group">
+                <img
+                  src="/assets/img/register.png"
+                  class="card-img-top mx-auto m-2"
+                />
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter Email.."
+                  class="form-control"
+                  formControlName="email"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter Password.."
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                  Register
+                </button>
+              </div>
+              <div class="form-group mt-3">
+                <p>
+                  Do you have an account?
+                  <a routerLink="/user/login" routerLinkActive="active"
+                    >Login</a
+                  >
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

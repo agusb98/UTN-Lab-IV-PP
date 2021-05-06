@@ -1,0 +1,26 @@
+<div class="body">
+  <div class="container">
+    <h1 style="text-align: center">Listado Peliculas</h1>
+    <table class="table table-dark mydatatable" style="text-align: left;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Public</th>
+          <th>Photo</th>
+        </tr>
+      </thead>
+      <tbody class="tbodyFilm">
+        <tr *ngFor="let film of listFilm | async"
+        (click)="emitFilm(film)">
+          <td>{{ film.nombre }}</td>
+          <td>{{ film.tipo }}</td>
+          <td>{{ film.fechaEstreno }}</td>
+          <td>{{ film.cantidadPublico }}</td>
+          <td><img src="{{ film.pathFoto }}" class="img" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

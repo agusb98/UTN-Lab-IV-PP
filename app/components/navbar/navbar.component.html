@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo01"
+    aria-controls="navbarTogglerDemo01"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" routerLink="">🎥 Home</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="pelicula/listado">List of Films</a>
+      </li>
+      <div *ngIf="user$ | async as user$">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="actor/listado">List of Actors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pelicula/alta">Add Film</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="actor/alta">Add Actor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="busqueda">Search</a>
+          </li>
+        </ul>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/who-am-i" routerLinkActive="active"
+          ><i class="fa fa-info-circle"></i> Who am I</a
+        >
+      </li>
+    </ul>
+
+    <ul *ngIf="user$ | async as user$; else login">
+      <ul class="navbar-nav mr-left mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="user/logout">logout</a>
+        </li>
+      </ul>
+    </ul>
+
+    <ng-template #login>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user/login" routerLinkActive="active"
+            ><i class="fa fa-sign-in"></i> Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/user/register"
+            routerLinkActive="active"
+            ><i class="fa fa-sign-in"></i> Register</a
+          >
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+</nav>

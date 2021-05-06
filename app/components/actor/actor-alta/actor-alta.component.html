@@ -1,0 +1,177 @@
+<app-navbar></app-navbar>
+<br />
+<div class="container">
+  <h1 style="text-align: center">Agregar Actor</h1><br>
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <app-pais-table (selectEvent)="selectCountry($event)"></app-pais-table>
+    </div>
+
+    <div class="col-md-8 order-md-1">
+      <div>
+        <form [formGroup]="form" (ngSubmit)="create()">
+
+          <div class="row formulario">
+            <div class="col-md-6 mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                placeholder="Ingrese nombre"
+                formControlName="nombre"
+                [(ngModel)]="unActor.nombre"
+              />
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.nombre.errors?.required &&
+                  form.controls.nombre.touched
+                "
+                >Campo requerido</small
+              >
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.nombre.errors?.contiene &&
+                  form.controls.nombre.touched
+                "
+                >Tiene espacios</small
+              >
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellido"
+                placeholder="Ingrese apellido"
+                formControlName="apellido"
+                [(ngModel)]="unActor.apellido"
+              />
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.apellido.errors?.required &&
+                  form.controls.apellido.touched
+                "
+                >Campo requerido</small
+              >
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.apellido.errors?.contiene &&
+                  form.controls.apellido.touched
+                "
+                >Tiene espacios</small
+              >
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="dni" class="form-label">Edad</label>
+              <input
+                type="number"
+                class="form-control"
+                id="edad"
+                placeholder="Ingrese edad"
+                formControlName="edad"
+                [(ngModel)]="unActor.edad"
+              />
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.edad.errors?.max ||
+                  (form.controls.edad.errors?.min && form.controls.edad.touched)
+                "
+                >Edad fuera de rango</small
+              >
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="nacionalidad" class="form-label">Nacionalidad</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nacionalidad"
+                placeholder="Seleccione nacionalidad"
+                formControlName="nacionalidad"
+                [(ngModel)]="unActor.nacionalidad"
+                disabled
+              />
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.nacionalidad.errors?.required &&
+                  form.controls.nacionalidad.touched
+                "
+                >Seleccione Nacionalidad</small
+              >
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="sexo" class="form-label">Sexo</label><br />
+              <select
+                id="sexo"
+                formControlName="sexo"
+                [(ngModel)]="unActor.sexo"
+              >
+                <option value="" disabled="true" selected>Seleccione..</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+              </select>
+              <small
+                class="invalid"
+                *ngIf="
+                  form.controls.sexo.touched &&
+                  form.controls.sexo.errors?.required
+                "
+                ><br />Campo requerido</small
+              >
+            </div>
+
+            <div
+              class="card col-12"
+              style="max-width: 280px; margin: auto"
+              *ngIf="countrySelected"
+            >
+              <img [src]="countrySelected.flag" class="card-img-top" alt="image pais" />
+              <div class="card-body">
+                <h5 class="card-title">{{ countrySelected.name }}</h5>
+                <input
+                  type="text"
+                  id="nacionalidad"
+                  class="form-control"
+                  formControlName="nacionalidad"
+                  [(ngModel)]="unActor.nacionalidad"
+                  value="{{ unActor.nacionalidad }}"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 mb-5">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="terminos"
+                formControlName="terminos"
+              />
+              <label for="terminos" class="form-check-label" for="terminos">
+                Aceptar términos y condiciones
+              </label>
+            </div>
+          </div>
+
+          <div class="col-md-12 d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-block">
+              Aceptar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div *ngIf="!film">
+  <p>Seleccione una Pelicula</p>
+</div>
+
+<div *ngIf="film" class="container">
+  <h2>{{ film.titulo }}</h2>
+  <div class="card bg-dark text-white" style="width: 200px;">
+    <img
+      class="card-img-top"
+      src="{{ film.pathFoto }}"
+      alt=""
+      style="width: 100%"
+    />
+    <div class="card-body">
+      <h4 class="card-title">ID: {{ film.id }}</h4>
+      <p class="card-text">
+        Nombre:
+        <b>{{ film.nombre }}</b><br>
+        Genero:
+        <b>{{ film.tipo }}</b><br>
+        Estreno:
+        <b>{{ film.fechaEstreno }}</b><br>
+        Nº Público:
+        <b>{{ film.cantidadPublico }}</b><br>
+        Protagonista:
+        <b>{{ film.protagonista }}</b><br>
+      </p>
+    </div>
+  </div>
+</div>

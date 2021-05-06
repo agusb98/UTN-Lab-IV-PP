@@ -1,0 +1,15 @@
+.list-group-item,
+.card,
+.card-body {
+  background-color: transparent;
+}
+
+.card {
+  background-color: #343a40;
+}
+
+.card-title,
+.card-text,
+.list-group-item {
+  color: rgb(220, 255, 234);
+}
