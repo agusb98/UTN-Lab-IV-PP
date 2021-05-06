@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Pelicula } from 'src/app/models/pelicula';
-import { PeliculaService } from 'src/app/services/pelicula.service';
+import { Producto } from 'src/app/models/producto';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -11,19 +11,19 @@ import { PeliculaService } from 'src/app/services/pelicula.service';
 export class BusquedaComponent {
 
   title = 'Ejemplo  @Input()  @Output()  ';
-  film: Pelicula;
+  product: Producto;
   list: Observable<any[]>;
 
-  constructor(private peliculaService: PeliculaService) {
-    this.list = this.peliculaService.getAll(); //DE ACA OBTIENE PELIS    
+  constructor(private productoService: ProductoService) {
+    this.list = this.productoService.getAll().valueChanges(); //DE ACA OBTIENE PELIS    
   }
 
-  getDetailes(NuevaPeli: Pelicula) {    
-    this.film = NuevaPeli;
+  getDetailes(product: Producto) {    
+    this.product = product;
   }
 
-  showFilm(parametroPelicula: Pelicula) {
-    //this.list.push(parametroPelicula);
+  showSroduct(product: Producto) {
+    //this.list.push(product);
   }
 
 

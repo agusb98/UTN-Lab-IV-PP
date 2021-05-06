@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table table-dark mydatatable" style="text-align: left;">
+    <thead>
+      <th>Codigo</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Nacionalidad</th>
+      <th>Comestible</th>
+    </thead>
+    <tbody style="cursor: pointer">
+      <tr
+        *ngFor="let unProducto of listProductos$ | async"
+        (click)="mostrarDetalles(unProducto)"
+      >
+        <td>{{ unProducto.codigo }}</td>
+        <td>{{ unProducto.descipcion }}</td>
+        <td>{{ unProducto.precio }}</td>
+        <td>{{ unProducto.stock }}</td>
+        <td>{{ unProducto.nacionalidad }}</td>
+        <td>{{ unProducto.comestible }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

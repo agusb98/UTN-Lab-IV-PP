@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
 <br />
 <div class="container">
-  <h1 style="text-align: center">Agregar Actor</h1><br>
+  <h1 style="text-align: center">Agregar Producto</h1>
+  <br />
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <app-pais-table (selectEvent)="selectCountry($event)"></app-pais-table>
@@ -10,82 +11,121 @@
     <div class="col-md-8 order-md-1">
       <div>
         <form [formGroup]="form" (ngSubmit)="create()">
-
           <div class="row formulario">
             <div class="col-md-6 mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
+              <label for="codigo" class="form-label">Codigo</label>
               <input
                 type="text"
                 class="form-control"
-                id="nombre"
-                placeholder="Ingrese nombre"
-                formControlName="nombre"
-                [(ngModel)]="unActor.nombre"
+                id="codigo"
+                placeholder="Ingrese codigo.."
+                formControlName="codigo"
+                [(ngModel)]="unProducto.codigo"
               />
               <small
                 class="invalid"
                 *ngIf="
-                  form.controls.nombre.errors?.required &&
-                  form.controls.nombre.touched
+                  form.controls.codigo.errors?.required &&
+                  form.controls.codigo.touched
                 "
                 >Campo requerido</small
               >
               <small
                 class="invalid"
                 *ngIf="
-                  form.controls.nombre.errors?.contiene &&
-                  form.controls.nombre.touched
+                  form.controls.codigo.errors?.contiene &&
+                  form.controls.codigo.touched
                 "
                 >Tiene espacios</small
               >
             </div>
 
             <div class="col-md-6 mb-3">
-              <label for="apellido" class="form-label">Apellido</label>
+              <label for="descipcion" class="form-label">Descipcion</label>
               <input
                 type="text"
                 class="form-control"
-                id="apellido"
-                placeholder="Ingrese apellido"
-                formControlName="apellido"
-                [(ngModel)]="unActor.apellido"
+                id="descipcion"
+                placeholder="Ingrese descipcion.."
+                formControlName="descipcion"
+                [(ngModel)]="unProducto.descipcion"
               />
               <small
                 class="invalid"
                 *ngIf="
-                  form.controls.apellido.errors?.required &&
-                  form.controls.apellido.touched
+                  form.controls.descipcion.errors?.required &&
+                  form.controls.descipcion.touched
                 "
                 >Campo requerido</small
               >
               <small
                 class="invalid"
                 *ngIf="
-                  form.controls.apellido.errors?.contiene &&
-                  form.controls.apellido.touched
+                  form.controls.descipcion.errors?.contiene &&
+                  form.controls.descipcion.touched
                 "
                 >Tiene espacios</small
               >
             </div>
 
             <div class="col-md-6 mb-3">
-              <label for="dni" class="form-label">Edad</label>
+              <label for="precio" class="form-label">Precio</label>
               <input
                 type="number"
                 class="form-control"
-                id="edad"
-                placeholder="Ingrese edad"
-                formControlName="edad"
-                [(ngModel)]="unActor.edad"
+                id="precio"
+                placeholder="Ingrese precio"
+                formControlName="precio"
+                [(ngModel)]="unProducto.precio"
               />
               <small
                 class="invalid"
                 *ngIf="
-                  form.controls.edad.errors?.max ||
-                  (form.controls.edad.errors?.min && form.controls.edad.touched)
+                  this.form.get('precio')?.errors?.required &&
+                  this.form.get('precio')?.touched
                 "
-                >Edad fuera de rango</small
               >
+                El campo es requerido
+              </small>
+              <small
+                class="invalid"
+                *ngIf="
+                  this.form.get('precio')?.errors?.min ||
+                  this.form.get('precio')?.errors?.max
+                "
+              >
+                El campo debe ser mínimo 1 y máximo 5000
+              </small>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="stock" class="form-label">Stock</label>
+              <input
+                type="number"
+                class="form-control"
+                id="stock"
+                placeholder="Ingrese stock"
+                formControlName="stock"
+                [(ngModel)]="unProducto.stock"
+              />
+              <small
+                class="invalid"
+                *ngIf="
+                  this.form.get('stock')?.errors?.required &&
+                  this.form.get('stock')?.touched
+                "
+              >
+                El campo es requerido
+              </small>
+              <small
+                class="invalid"
+                *ngIf="
+                  this.form.get('stock')?.errors?.min ||
+                  this.form.get('stock')?.errors?.max
+                "
+              >
+                El campo debe ser mínimo 1 y máximo 5000
+              </small>
             </div>
 
             <div class="col-md-6 mb-3">
@@ -96,7 +136,7 @@
                 id="nacionalidad"
                 placeholder="Seleccione nacionalidad"
                 formControlName="nacionalidad"
-                [(ngModel)]="unActor.nacionalidad"
+                [(ngModel)]="unProducto.nacionalidad"
                 disabled
               />
               <small
@@ -110,21 +150,22 @@
             </div>
 
             <div class="col-md-6 mb-3">
-              <label for="sexo" class="form-label">Sexo</label><br />
+              <label for="comestible" class="form-label">comestible</label
+              ><br />
               <select
-                id="sexo"
-                formControlName="sexo"
-                [(ngModel)]="unActor.sexo"
+                id="comestible"
+                formControlName="comestible"
+                [(ngModel)]="unProducto.comestible"
               >
                 <option value="" disabled="true" selected>Seleccione..</option>
-                <option value="Femenino">Femenino</option>
-                <option value="Masculino">Masculino</option>
+                <option value="True">Comestible</option>
+                <option value="False">No Comestible</option>
               </select>
               <small
                 class="invalid"
                 *ngIf="
-                  form.controls.sexo.touched &&
-                  form.controls.sexo.errors?.required
+                  form.controls.comestible.touched &&
+                  form.controls.comestible.errors?.required
                 "
                 ><br />Campo requerido</small
               >
@@ -135,7 +176,11 @@
               style="max-width: 280px; margin: auto"
               *ngIf="countrySelected"
             >
-              <img [src]="countrySelected.flag" class="card-img-top" alt="image pais" />
+              <img
+                [src]="countrySelected.flag"
+                class="card-img-top"
+                alt="image pais"
+              />
               <div class="card-body">
                 <h5 class="card-title">{{ countrySelected.name }}</h5>
                 <input
@@ -143,8 +188,8 @@
                   id="nacionalidad"
                   class="form-control"
                   formControlName="nacionalidad"
-                  [(ngModel)]="unActor.nacionalidad"
-                  value="{{ unActor.nacionalidad }}"
+                  [(ngModel)]="unProducto.nacionalidad"
+                  value="{{ unProducto.nacionalidad }}"
                   readonly
                 />
               </div>

@@ -1,57 +1,24 @@
 <app-navbar></app-navbar>
 <div class="container p-4">
-  <app-pelicula-tabla
-    [listFilm]="list"
-    (filmSelected)="getDetailes($event)"
-  ></app-pelicula-tabla>
-  <div class="container marketing" id="filmDetailes">
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">
-        <br /><br />
-        <img
-          style="float: right;"
-          class="rounded-circle"
-          src="data:image/png;base64,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"
-          alt="Generic placeholder image"
-          width="140"
-          height="140"
-        />
-        <h2  style="text-align: right">Para</h2>
-        <h2  style="text-align: right">Borrar</h2>
-        <p  style="text-align: right">pelicula seleccionada</p>
-        <p  style="left:35%; position: absolute;">
-          <a class="btn btn-secondary" href="#" role="button">Borrar &raquo;</a>
-        </p>
-      </div>
-      <!-- /.col-lg-4 -->
-      <div class="card bg-dark text-white" style="margin: auto">
-        <div class="card-body">
-          <br />
-          <app-pelicula-detalle [film]="film"></app-pelicula-detalle>
-        </div>
-      </div>
+  <app-producto-tabla
+    [listToInput]="list"
+    (productSelected)="getDetailes($event)"
+  ></app-producto-tabla>
 
-      <div class="card" class="col-lg-4">
-        <br /><br />
-        <img
-        style="float: left;"
-          class="rounded-circle"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBuc8GPUic1bokqGYismwdK0UbKrhdz7o82Q&usqp=CAU"
-          alt="Generic placeholder image"
-          width="140"
-          height="140"
-        />
-        <h2 style="text-align: left">Para Modificar</h2>
-        <p style="text-align: left">pelicula seleccionada</p>
-        <p>
-          <a class="btn btn-secondary" href="#" role="button"
-            >Modificar &raquo;</a
-          >
-        </p>
-      </div>
-      <!-- /.col-lg-4 -->
+  <div class="container p-4">
+    <div
+      class="card bg-dark text-white"
+      style="
+        margin: auto;
+        height: 50%;
+        width: 22%;
+        background-color: transparent;
+        right: 30%;
+      "
+    >
+      <app-producto-detalle [product]="product"></app-producto-detalle>
     </div>
-    <!-- /.row -->
   </div>
 </div>
+
+<div class="container p-4"></div>

@@ -12,11 +12,9 @@ const redirectUnauthorizedToLogin = () =>
 
 const routes: Routes = [
   { path: '', redirectTo: 'bienvenido', pathMatch: 'full' },
-  { path: 'busqueda', component: BusquedaComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'producto/detalle', component: BusquedaComponent, ...canActivate(redirectUnauthorizedToLogin) },
   { path: 'bienvenido', component: BienvenidoComponent },
-  { path: 'who-am-i', component: WhoAmIComponent },
-  { path: 'actor', loadChildren: () => import('../app/components/actor/actor-routing.module').then(m => m.ActorRoutingModule) },
-  { path: 'pelicula', loadChildren: () => import('./components/peliculas/peliculas-routing.module').then(m => m.PeliculasRoutingModule) },
+  { path: 'producto', loadChildren: () => import('../app/components/producto/producto-routing.module').then(m => m.ProductoRoutingModule) },
   { path: 'user', loadChildren: () => import('../app/components/users/user-routing.module').then(m => m.UserRoutingModule) },  
   { path: '**', component: PageNotFoundComponent },
 ];
