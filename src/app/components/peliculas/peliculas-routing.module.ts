@@ -10,9 +10,9 @@ const redirectUnauthorizedToLogin = () =>
   redirectUnauthorizedTo(['user/login']);
 
 const routes: Routes = [
-  { path: '', redirectTo: 'pelicula/listado' },
+  { path: '', redirectTo: 'pelicula/listado', pathMatch: 'full' },
   { path: 'listado', component: PeliculaListadoComponent },
-  { path: 'alta', component: PeliculaAltaComponent, ...canActivate(redirectUnauthorizedToLogin)  },
+  { path: 'alta', component: PeliculaAltaComponent, ...canActivate(redirectUnauthorizedToLogin) },
 ];
 
 @NgModule({
